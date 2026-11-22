@@ -288,42 +288,158 @@ me = <span class="token-class">Student</span>()
 
         <div class="projects__grid">
 
-          <!-- Project Card 1: My Portfolio Website (Current Project) -->
+          <!-- Project Card 1: Notes App (Real Project) -->
           <article class="project-card">
             <div class="project-card__header">
               <div class="project-card__icon" aria-hidden="true">
+                <!-- Notes / App Document Icon -->
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
                 </svg>
               </div>
-              <span class="project-card__badge">Current Project</span>
+              <span class="project-card__badge">Web App</span>
             </div>
 
             <div class="project-card__body">
-              <h3 class="project-card__title">My Portfolio Website</h3>
+              <h3 class="project-card__title">Notes App</h3>
               <p class="project-card__description">
-                A clean, modern single-page portfolio built from scratch featuring a sleek dark theme, 
-                responsive navigation, smooth scrolling, and accessible semantic HTML.
+                A private notes app with Google and email sign-in, photo and PDF attachments, and per-user data protection. Built with plain JavaScript and Supabase, deployed on Vercel.
               </p>
+
+              <!-- Screenshots Row: 3 mobile screenshots with lazy loading & dimensions -->
+              <div class="project-card__gallery" aria-label="Notes App screenshots">
+                <!-- Screenshot 1: Login -->
+                <button
+                  type="button"
+                  class="project-card__thumb-btn"
+                  data-full="images/notes-app-login.jpg"
+                  data-caption="Notes App — Sign-in screen with Google and email authentication"
+                  aria-label="View larger image: Sign-in screen"
+                >
+                  <img
+                    src="images/notes-app-login.jpg"
+                    alt="Notes App sign-in screen with email and Google login"
+                    loading="lazy"
+                    width="1080"
+                    height="2224"
+                    class="project-card__thumb"
+                  />
+                  <span class="project-card__thumb-zoom" aria-hidden="true">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                      <line x1="11" y1="8" x2="11" y2="14"></line>
+                      <line x1="8" y1="11" x2="14" y2="11"></line>
+                    </svg>
+                  </span>
+                </button>
+
+                <!-- Screenshot 2: Add Note -->
+                <button
+                  type="button"
+                  class="project-card__thumb-btn"
+                  data-full="images/notes-app-add.jpg"
+                  data-caption="Notes App — Note editor with photo and PDF attachment upload"
+                  aria-label="View larger image: Note editor with attachments"
+                >
+                  <img
+                    src="images/notes-app-add.jpg"
+                    alt="Notes App editor screen for creating a new note with photo and PDF attachments"
+                    loading="lazy"
+                    width="1080"
+                    height="2224"
+                    class="project-card__thumb"
+                  />
+                  <span class="project-card__thumb-zoom" aria-hidden="true">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                      <line x1="11" y1="8" x2="11" y2="14"></line>
+                      <line x1="8" y1="11" x2="14" y2="11"></line>
+                    </svg>
+                  </span>
+                </button>
+
+                <!-- Screenshot 3: Notes List -->
+                <button
+                  type="button"
+                  class="project-card__thumb-btn"
+                  data-full="images/notes-app-list.jpg"
+                  data-caption="Notes App — Dashboard displaying user's private saved notes"
+                  aria-label="View larger image: Dashboard and saved notes list"
+                >
+                  <img
+                    src="images/notes-app-list.jpg"
+                    alt="Notes App dashboard showing list of private saved notes"
+                    loading="lazy"
+                    width="1080"
+                    height="2224"
+                    class="project-card__thumb"
+                  />
+                  <span class="project-card__thumb-zoom" aria-hidden="true">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                      <line x1="11" y1="8" x2="11" y2="14"></line>
+                      <line x1="8" y1="11" x2="14" y2="11"></line>
+                    </svg>
+                  </span>
+                </button>
+              </div>
             </div>
 
             <div class="project-card__footer">
               <!-- Technology Tags -->
               <ul class="project-card__tags">
-                <li class="project-tag">HTML5</li>
-                <li class="project-tag">CSS3</li>
+                <li class="project-tag">HTML</li>
+                <li class="project-tag">CSS</li>
                 <li class="project-tag">JavaScript</li>
+                <li class="project-tag">Supabase</li>
+                <li class="project-tag">Vercel</li>
               </ul>
 
-              <!-- Project Action Button -->
-              <a href="#hero" class="btn btn--project">
-                <span>View Project</span>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                  <polyline points="15 3 21 3 21 9"></polyline>
-                  <line x1="10" y1="14" x2="21" y2="3"></line>
+              <!-- Two Project Action Buttons -->
+              <div class="project-card__actions">
+                <a
+                  href="https://cag-notes.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn--project btn--project-primary"
+                >
+                  <span>Live app</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                </a>
+
+                <a
+                  href="https://github.com/Christianamare1317/portfolio.git"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn--project btn--project-secondary"
+                >
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                  </svg>
+                  <span>GitHub</span>
+                </a>
+              </div>
+
+              <!-- Note under the card -->
+              <p class="project-card__note">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="16" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
                 </svg>
-              </a>
+                <span>Sign-in is limited to approved test users, so screenshots show the full flow.</span>
+              </p>
             </div>
           </article>
 
@@ -794,6 +910,25 @@ me = <span class="token-class">Student</span>()
       </div>
     </div>
   </footer>
+
+  <!-- =========================================================
+       IMAGE LIGHTBOX MODAL
+       - Opens screenshots enlarged when clicking thumbnails
+       - Accessible dialog closing on click outside, close button, or ESC key
+       ========================================================= -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot preview" aria-hidden="true">
+    <div class="lightbox__overlay" id="lightbox-overlay"></div>
+    <div class="lightbox__container">
+      <button class="lightbox__close" id="lightbox-close" type="button" aria-label="Close image preview">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <img src="" alt="" class="lightbox__img" id="lightbox-img" />
+      <p class="lightbox__caption" id="lightbox-caption"></p>
+    </div>
+  </div>
 
   <!-- JavaScript file for interactivity (mobile menu toggle & scroll effects) -->
   <script src="script.js"></script>

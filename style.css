@@ -734,6 +734,211 @@ ul {
   transform: translate(3px, -3px); /* Subtle diagonal arrow shift */
 }
 
+/* Screenshots Row Gallery inside Project Card */
+.project-card__gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.55rem;
+  margin: 1.25rem 0 0.5rem;
+}
+
+.project-card__thumb-btn {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  display: block;
+  aspect-ratio: 1080 / 2224;
+  transition: var(--transition);
+}
+
+.project-card__thumb-btn:hover,
+.project-card__thumb-btn:focus-visible {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px -2px var(--accent-glow);
+  outline: none;
+}
+
+.project-card__thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.project-card__thumb-btn:hover .project-card__thumb {
+  transform: scale(1.06);
+}
+
+/* Magnifying glass hover indicator */
+.project-card__thumb-zoom {
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 15, 25, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.project-card__thumb-btn:hover .project-card__thumb-zoom,
+.project-card__thumb-btn:focus-visible .project-card__thumb-zoom {
+  opacity: 1;
+}
+
+/* Two Action Buttons Container */
+.project-card__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+  width: 100%;
+}
+
+.project-card__actions .btn--project {
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.75rem 0.85rem;
+}
+
+.btn--project-secondary {
+  background-color: rgba(255, 255, 255, 0.03);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.btn--project-secondary:hover {
+  background-color: var(--accent-soft);
+  color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 4px 15px var(--accent-glow);
+}
+
+.btn--project-secondary svg {
+  transition: transform 0.2s ease;
+}
+
+.btn--project-secondary:hover svg {
+  transform: scale(1.1);
+}
+
+/* Small Note under Card (e.g. test user restriction) */
+.project-card__note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  padding: 0.65rem 0.75rem;
+  border-radius: 6px;
+  margin-top: 0.25rem;
+}
+
+.project-card__note svg {
+  min-width: 14px;
+  margin-top: 2px;
+  color: var(--accent);
+}
+
+/* ==========================================================================
+   IMAGE LIGHTBOX COMPONENT
+   - Modal overlay for displaying screenshot full-size
+   ========================================================================== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.lightbox__overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(7, 10, 18, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.lightbox__container {
+  position: relative;
+  z-index: 2001;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: scale(0.92);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.lightbox.is-open .lightbox__container {
+  transform: scale(1);
+}
+
+.lightbox__img {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-hover);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 35px var(--accent-glow);
+  object-fit: contain;
+  background-color: var(--bg-secondary);
+}
+
+.lightbox__caption {
+  margin-top: 0.85rem;
+  font-size: 0.92rem;
+  color: #e2e8f0;
+  text-align: center;
+  max-width: 500px;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: -2.75rem;
+  right: 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.lightbox__close:hover {
+  background: var(--accent);
+  color: var(--bg-primary);
+  border-color: var(--accent);
+  transform: rotate(90deg);
+}
+
 /* ==========================================================================
    10. SKILLS SECTION
    - Grid layout of cards for technologies & tools
@@ -1309,5 +1514,21 @@ ul {
 
   .footer__links {
     gap: 1.1rem;
+  }
+
+  /* Two project buttons stack on small phones */
+  .project-card__actions {
+    grid-template-columns: 1fr;
+  }
+
+  .lightbox {
+    padding: 1rem;
+  }
+
+  .lightbox__close {
+    top: -2.5rem;
+    right: 0.25rem;
+    width: 34px;
+    height: 34px;
   }
 }

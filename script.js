@@ -8,6 +8,7 @@
  * 3. Adding a subtle shadow to the navigation bar when the user scrolls down.
  * 4. Highlighting active navigation links based on current scroll position.
  * 5. One-click copy email address to clipboard with animated feedback.
+ * 6. Screenshot lightbox modal for project card previews.
  * ============================================================================
  */
 
@@ -142,6 +143,73 @@ document.addEventListener("DOMContentLoaded", () => {
           console.error("Copy failed", err);
         }
         document.body.removeChild(tempInput);
+      }
+    });
+  }
+
+  // ==========================================================================
+  // 6. SCREENSHOT LIGHTBOX MODAL
+  // Enlarges screenshot preview images on click. Closes with the close button,
+  // by clicking outside the image on the overlay, or by pressing the Escape key.
+  // ==========================================================================
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const lightboxCaption = document.getElementById("lightbox-caption");
+  const lightboxClose = document.getElementById("lightbox-close");
+  const lightboxOverlay = document.getElementById("lightbox-overlay");
+  const thumbBtns = document.querySelectorAll(".project-card__thumb-btn");
+
+  if (lightbox && lightboxImg) {
+    // Open the lightbox with the clicked screenshot
+    const openLightbox = (imgSrc, captionText) => {
+      lightboxImg.src = imgSrc;
+      lightboxImg.alt = captionText || "Enlarged project screenshot preview";
+      if (lightboxCaption) {
+        lightboxCaption.textContent = captionText || "";
+      }
+      lightbox.classList.add("is-open");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden"; // Prevent page scrolling while preview is open
+    };
+
+    // Close the lightbox modal
+    const closeLightbox = () => {
+      lightbox.classList.remove("is-open");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = ""; // Restore page scrolling
+      // Clear image source after fade-out transition
+      setTimeout(() => {
+        if (!lightbox.classList.contains("is-open")) {
+          lightboxImg.src = "";
+        }
+      }, 300);
+    };
+
+    // Attach click listener to each screenshot thumbnail button
+    thumbBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const fullSrc = btn.getAttribute("data-full");
+        const caption = btn.getAttribute("data-caption");
+        if (fullSrc) {
+          openLightbox(fullSrc, caption);
+        }
+      });
+    });
+
+    // Close on close button click
+    if (lightboxClose) {
+      lightboxClose.addEventListener("click", closeLightbox);
+    }
+
+    // Close on background overlay click
+    if (lightboxOverlay) {
+      lightboxOverlay.addEventListener("click", closeLightbox);
+    }
+
+    // Close on keyboard Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && lightbox.classList.contains("is-open")) {
+        closeLightbox();
       }
     });
   }
